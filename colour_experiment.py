@@ -474,12 +474,10 @@ def render_main_experiment():
 
 def run_colour_trial(start_color, end_color, is_practice):
     """Run a single colour trial and return whether it's complete"""
-    
-    # Check if trial is complete (either by timeout or user detection)
+
     if st.session_state.current_step >= st.session_state.total_steps or st.session_state.trial_complete:
         return True
-    
-    # Get current colour
+
     current_rgb = interpolate_color(
         start_color,
         end_color,
@@ -487,8 +485,7 @@ def run_colour_trial(start_color, end_color, is_practice):
         st.session_state.current_step
     )
     current_hex = rgb_to_hex(current_rgb)
-    
-    # Display colour box
+
     st.markdown(f"""
         <div style="
             background-color: {current_hex};
@@ -562,10 +559,9 @@ def run_colour_trial(start_color, end_color, is_practice):
                 st.session_state.max_interval
             )
             st.rerun()
-    
-    # Auto-refresh
-    time.sleep(0.05)
-    st.rerun()
+        else:
+            time.sleep(0.1)
+            st.rerun()
     
     return False
 
