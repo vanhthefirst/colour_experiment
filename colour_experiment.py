@@ -1,15 +1,8 @@
-"""
-Enhanced Colour Perception Test Application
-Advanced version with practice trials, multiple trials, reaction time measurement,
-and comprehensive data analysis features.
-"""
-
 import streamlit as st
 import time
 import random
 import pandas as pd
 from datetime import datetime
-import colorsys
 import json
 from io import BytesIO
 
@@ -166,8 +159,7 @@ def main():
                     st.info(f"**Spectrum:** {current_spectrum['spectrum_name']}")
                 else:
                     st.info("**PRACTICE TRIAL**")
-                
-                st.metric("Responses This Trial", len(st.session_state.current_trial_results))
+
                 st.metric("False Alarms", st.session_state.false_alarms)
     
     # Main content area
